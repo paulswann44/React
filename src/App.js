@@ -18,12 +18,14 @@ function App() {
         [2, 4, 6]
     ]
 
+    //useState function- used to store data that changes over time
     const [xPlaying, setXPlaying]= useState(true);
     const [board, setBoard] = useState(Array(9).fill(null));
     const [scores, setScores] = useState({xScore: 0, oState: 0});
     const [gameOver, setGameOver] = useState(false);
 
     const handleBoxClick=(boxIdx) => {
+        //returns a new array if box is clicked
         const updatedBoard = board.map((value,idx)=>{
         if(idx ===boxIdx){
             return xPlaying === true ? "X" : "O";
@@ -31,6 +33,8 @@ function App() {
             return value;
         }
         })
+
+
         const winner = checkWinner(updatedBoard);
 
         if(winner){
@@ -66,6 +70,7 @@ function App() {
         setGameOver(false);
         setBoard(Array(9).fill(null));
     }
+
 
   return (
     <div className="App">
